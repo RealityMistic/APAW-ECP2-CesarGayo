@@ -4,8 +4,18 @@ import java.time.LocalDateTime;
 import java.time.Month;
 
 public class Album {
+    int id;
     LocalDateTime fechaLanzamiento;
     GeneroMusical generoMusical;
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public GeneroMusical getGeneroMusical() {
         return generoMusical;

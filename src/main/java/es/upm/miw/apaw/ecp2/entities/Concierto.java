@@ -2,29 +2,30 @@ package es.upm.miw.apaw.ecp2.entities;
 
 import java.time.LocalDateTime;
 
-public class Concierto extends PromocionComponent {
+public class Concierto  {
+    int id;
     int duracionEnMinutos;
     String nombre;
     double precio;
+    LocalDateTime momento;
 
-    public Concierto(int idPromocion, LocalDateTime momentoPromocion,
-                     String local, String ciudad, int duracionEnMinutos,
+
+    public Concierto(int id, LocalDateTime momento,
+                     int duracionEnMinutos,
                      String nombre, double precio) {
-        super(idPromocion, momentoPromocion, local, ciudad);
+        this.id = id;
+        this.momento = momento;
         this.duracionEnMinutos = duracionEnMinutos;
         this.nombre = nombre;
         this.precio = precio;
     }
 
-    @Override
-    public void view(){
-
-        System.out.println("Código de la promoción-concierto: " + Integer.toString(idPromocion) );
+    public int getId() {
+        return id;
     }
 
-    @Override
-    public boolean isComposite(){
-        return false;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getDuracionEnMinutos() {
