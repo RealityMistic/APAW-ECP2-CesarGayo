@@ -1,5 +1,6 @@
+package es.upm.miw.apaw.ecp2.entities;
+
 import java.time.LocalDateTime;
-import java.util.HashMap;
 
 public abstract class PromocionComponent {
     int idPromocion;

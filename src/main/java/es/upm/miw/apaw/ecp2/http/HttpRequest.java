@@ -1,4 +1,4 @@
-package http;
+package es.upm.miw.apaw.ecp2.http;
 
 import java.util.HashMap;
 import java.util.Map;

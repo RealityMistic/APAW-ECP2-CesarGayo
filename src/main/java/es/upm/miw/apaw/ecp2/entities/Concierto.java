@@ -1,13 +1,15 @@
+package es.upm.miw.apaw.ecp2.entities;
+
 import java.time.LocalDateTime;
 
-public class ConciertoNodoHoja extends PromocionComponent {
+public class Concierto extends PromocionComponent {
     int duracionEnMinutos;
     String nombre;
     double precio;
 
-    public ConciertoNodoHoja(int idPromocion, LocalDateTime momentoPromocion,
-                             String local, String ciudad, int duracionEnMinutos,
-                             String nombre, double precio) {
+    public Concierto(int idPromocion, LocalDateTime momentoPromocion,
+                     String local, String ciudad, int duracionEnMinutos,
+                     String nombre, double precio) {
         super(idPromocion, momentoPromocion, local, ciudad);
         this.duracionEnMinutos = duracionEnMinutos;
         this.nombre = nombre;

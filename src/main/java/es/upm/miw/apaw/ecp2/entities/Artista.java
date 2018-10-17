@@ -1,3 +1,5 @@
+package es.upm.miw.apaw.ecp2.entities;
+
 import java.util.ArrayList;
 
 
@@ -5,7 +7,6 @@ public class Artista extends Profesional {
     int idArtista;
     boolean anonimo;
     Agente suAgente;
-    AgenteFactory agenteFactory;
     ArrayList<Album> susAlbumes;
     ArtistaBuilder artistaBuilder;
 

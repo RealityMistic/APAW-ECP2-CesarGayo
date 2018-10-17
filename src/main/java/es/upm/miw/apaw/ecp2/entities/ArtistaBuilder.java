@@ -1,3 +1,5 @@
+package es.upm.miw.apaw.ecp2.entities;
+
 import java.util.ArrayList;
 
 public class ArtistaBuilder extends Profesional{
@@ -43,10 +45,8 @@ public class ArtistaBuilder extends Profesional{
     public void id(int idArtista){
             this.idArtista=idArtista;
     }
-    public void agente(int idAgente, String nombre, String pseudonimo, String telefono){
-            suAgente = AgenteFactory.
-                        getInstanceAgenteFactory().
-                        crear(idAgente, nombre, pseudonimo);
+    public void agente(int idAgente, String nombre, String telefono){
+            suAgente = new Agente(idAgente, nombre, telefono);
     }
     public void nombre(String nombre){
             this.nombre=nombre;

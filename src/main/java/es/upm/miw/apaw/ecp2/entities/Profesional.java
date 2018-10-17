@@ -1,3 +1,5 @@
+package es.upm.miw.apaw.ecp2.entities;
+
 public class Profesional {
     String nombre;
     String pseudonimo;

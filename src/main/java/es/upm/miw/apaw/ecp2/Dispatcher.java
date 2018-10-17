@@ -1,20 +1,11 @@
-package api;
+package es.upm.miw.apaw.ecp2;
 
-import api.apiControllers.SuggestionApiController;
-import api.apiControllers.ThemeApiController;
-import api.apiControllers.UserApiController;
-import api.daos.DaoFactory;
-import api.daos.memory.DaoMemoryFactory;
-import api.dtos.SuggestionDto;
-import api.dtos.ThemeCreationDto;
-import api.dtos.UserDto;
-import api.entities.Category;
-import api.exceptions.ArgumentNotValidException;
-import api.exceptions.NotFoundException;
-import api.exceptions.RequestInvalidException;
-import http.HttpRequest;
-import http.HttpResponse;
-import http.HttpStatus;
+
+import es.upm.miw.apaw.ecp2.entities.Artista;
+import es.upm.miw.apaw.ecp2.http.HttpRequest;
+import es.upm.miw.apaw.ecp2.http.HttpStatus;
+import es.upm.miw.apaw.ecp2.http.HttpResponse;
+import es.upm.miw.apaw..ecp2http.HttpStatus;
 
 public class Dispatcher {
 
@@ -22,11 +13,13 @@ public class Dispatcher {
         DaoFactory.setFactory(new DaoMemoryFactory());
     }
 
-    private UserApiController userApiController = new UserApiController();
+    private ArtistaApiController artistaApiController = new AgenteApiController();
 
-    private SuggestionApiController suggestionApiController = new SuggestionApiController();
+    private AgenteApiController agenteApiController = new AgenteApiController();
 
-    private ThemeApiController themeApiController = new ThemeApiController();
+    private ConciertoApiController conciertoApiController = new ConciertoApiController();
+
+    private AlbumesArtistaApiController albumesArtistaApiController = new AlbumesArtistaApiController();
 
     public void submit(HttpRequest request, HttpResponse response) {
         String ERROR_MESSAGE = "{'error':'%S'}";
@@ -63,9 +56,11 @@ public class Dispatcher {
         }
     }
 
+
+    // REVISAR
     private void doPost(HttpRequest request, HttpResponse response) {
-        if (request.isEqualsPath(UserApiController.USERS)) {
-            response.setBody(this.userApiController.create((UserDto) request.getBody()));
+        if (request.isEqualsPath(AlbumesArtistaApiController.AlbumesArtistaS)) {
+            response.setBody(this.AlbumesArtistaApiController.create((AlbumesArtistaDto) request.getBody()));
         } else if (request.isEqualsPath(SuggestionApiController.SUGGESTIONS)) {
             this.suggestionApiController.create((SuggestionDto) request.getBody());
         } else if (request.isEqualsPath(ThemeApiController.THEMES)) {
@@ -78,12 +73,12 @@ public class Dispatcher {
     }
 
     private void doGet(HttpRequest request, HttpResponse response) {
-        if (request.isEqualsPath(ThemeApiController.THEMES)) {
-            response.setBody(this.themeApiController.readAll());
-        } else if (request.isEqualsPath(ThemeApiController.THEMES + ThemeApiController.ID_ID + ThemeApiController.AVERAGE)) {
-            response.setBody(this.themeApiController.readAverage(request.getPath(1)));
-        } else if (request.isEqualsPath(ThemeApiController.THEMES + ThemeApiController.SEARCH)) {
-            response.setBody(this.themeApiController.find(request.getParams().get("q")));
+        if (request.isEqualsPath(ArtistaApiController.ArtistaS)) {
+            response.setBody(this.ArtistaApiController.readAll());
+        } else if (request.isEqualsPath(ArtistaApiController.ArtistaS + ArtistaApiController.ID_ID + ArtistaApiController.AVERAGE)) {
+            response.setBody(this.ArtistaApiController.readAverage(request.getPath(1)));
+        } else if (request.isEqualsPath(ArtistaApiController.ArtistaS + ArtistaApiController.SEARCH)) {
+            response.setBody(this.ArtistaApiController.find(request.getParams().get("q")));
         } else {
             throw new RequestInvalidException("request error: " + request.getMethod() + ' ' + request.getPath());
         }
