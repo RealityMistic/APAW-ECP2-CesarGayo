@@ -1,10 +1,17 @@
 package es.upm.miw.apaw.ecp2.entities;
 
 public class Profesional {
+    int id;
     String nombre;
     String pseudonimo;
 
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
     public String getPseudonimo() {
         return pseudonimo;
     }

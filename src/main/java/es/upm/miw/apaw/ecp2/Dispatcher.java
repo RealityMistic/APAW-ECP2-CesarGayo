@@ -1,6 +1,10 @@
 package es.upm.miw.apaw.ecp2;
 
 
+import es.upm.miw.apaw.ecp2.apicontrollers.ArtistaApiController;
+import es.upm.miw.apaw.ecp2.apicontrollers.CrearConciertoAPIController;
+import es.upm.miw.apaw.ecp2.daos.DaoFactory;
+import es.upm.miw.apaw.ecp2.dtos.ConciertoDto;
 import es.upm.miw.apaw.ecp2.entities.Artista;
 import es.upm.miw.apaw.ecp2.http.HttpRequest;
 import es.upm.miw.apaw.ecp2.http.HttpStatus;
@@ -61,51 +65,39 @@ public class Dispatcher {
     private void doPost(HttpRequest request, HttpResponse response) {
         if (request.isEqualsPath(AlbumesArtistaApiController.AlbumesArtistaS)) {
             response.setBody(this.AlbumesArtistaApiController.create((AlbumesArtistaDto) request.getBody()));
-        } else if (request.isEqualsPath(SuggestionApiController.SUGGESTIONS)) {
-            this.suggestionApiController.create((SuggestionDto) request.getBody());
-        } else if (request.isEqualsPath(ThemeApiController.THEMES)) {
-            response.setBody(this.themeApiController.create((ThemeCreationDto) request.getBody()));
-        } else if (request.isEqualsPath(ThemeApiController.THEMES + ThemeApiController.ID_ID + ThemeApiController.VOTES)) {
-            this.themeApiController.createVote(request.getPath(1), (Integer) request.getBody());
+        } else if (request.isEqualsPath(AgenteApiController.AGENTE)) {
+            this.agenteApiController.create((AgenteDto) request.getBody());
         } else {
             throw new RequestInvalidException("request error: " + request.getMethod() + ' ' + request.getPath());
         }
     }
 
     private void doGet(HttpRequest request, HttpResponse response) {
-        if (request.isEqualsPath(ArtistaApiController.ArtistaS)) {
+        if (request.isEqualsPath(ArtistaApiController.ARTISTAS)) {
             response.setBody(this.ArtistaApiController.readAll());
-        } else if (request.isEqualsPath(ArtistaApiController.ArtistaS + ArtistaApiController.ID_ID + ArtistaApiController.AVERAGE)) {
-            response.setBody(this.ArtistaApiController.readAverage(request.getPath(1)));
-        } else if (request.isEqualsPath(ArtistaApiController.ArtistaS + ArtistaApiController.SEARCH)) {
-            response.setBody(this.ArtistaApiController.find(request.getParams().get("q")));
+        } else if (request.isEqualsPath(ArtistaApiController.ARTISTAS + ArtistaApiController.ID)) {
+            response.setBody(this.ArtistaApiController.findById(request.getPath(1)));
+        } else if (request.isEqualsPath(ArtistaApiController.ARTISTAS + ArtistaApiController.NOMBRE)) {
+            response.setBody(this.ArtistaApiController.findByName(request.getParams().get("name")));
         } else {
             throw new RequestInvalidException("request error: " + request.getMethod() + ' ' + request.getPath());
         }
     }
 
     private void doPut(HttpRequest request) {
-        if (request.isEqualsPath(UserApiController.USERS + UserApiController.ID_ID)) {
-            this.userApiController.update(request.getPath(1), (UserDto) request.getBody());
+        if (request.isEqualsPath(CrearConciertoAPIController.CONCIERTOS + CrearConciertoAPIController.ID_ID)) {
+            this.conciertoApiController.create(request.getPath(1), (ConciertoDto) request.getBody());
         } else {
             throw new RequestInvalidException("request error: " + request.getMethod() + ' ' + request.getPath());
         }
     }
 
     private void doPatch(HttpRequest request) {
-        if (request.isEqualsPath(ThemeApiController.THEMES + ThemeApiController.ID_ID + ThemeApiController.CATEGORY)) {
-            this.themeApiController.updateCategory(request.getPath(1), (Category) request.getBody());
-        } else {
-            throw new RequestInvalidException("request error: " + request.getMethod() + ' ' + request.getPath());
-        }
+
     }
 
     private void doDelete(HttpRequest request) {
-        if (request.isEqualsPath(ThemeApiController.THEMES + ThemeApiController.ID_ID)) {
-            this.themeApiController.delete(request.getPath(1));
-        } else {
-            throw new RequestInvalidException("request error: " + request.getMethod() + ' ' + request.getPath());
-        }
+
     }
 
 }
