@@ -6,12 +6,18 @@ import es.upm.miw.apaw.ecp2.entities.Concierto;
 public class ConciertoDaoMemory extends GenericDaoMemory<Concierto> implements ConciertoDao {
 
     @Override
-    public String getId(Concierto concierto) {
+    public void addConcierto(Concierto concierto) {
+
+    }
+
+    @Override
+    public int getId(Concierto concierto) {
         return concierto.getId();
     }
 
     @Override
-    public void setId(Concierto concierto, String id) {
-        concierto.setId(id);
+    public void setId(Concierto concierto, int id) {
+
     }
+
 }

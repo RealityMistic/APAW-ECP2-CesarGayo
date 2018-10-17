@@ -4,10 +4,9 @@ import es.upm.miw.apaw.ecp2.entities.Album;
 
 import java.util.List;
 
-    public interface AlbumsDao extends GenericDao<Album, String> {
-        Album findLastAlbum();
-        void addAlbums(List<Album>);
-
-    }
-
+public interface AlbumsDao extends GenericDao<Album> {
+    Album findLastAlbum();
+    void addAlbums(List<Album> albumList);
 }
+
+

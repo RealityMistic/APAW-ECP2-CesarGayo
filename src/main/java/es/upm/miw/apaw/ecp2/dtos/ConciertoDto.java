@@ -3,6 +3,7 @@ package es.upm.miw.apaw.ecp2.dtos;
 import java.time.LocalDateTime;
 
 public class ConciertoDto {
+        private int id;
 
         private LocalDateTime fecha;
 
@@ -10,17 +11,35 @@ public class ConciertoDto {
 
         private double precio;
 
+        int duracion;
+
         public ConciertoDto(LocalDateTime fecha, String nombre, double precio) {
             this.fecha = fecha;
             this.nombre = nombre;
             this.precio=precio;
         }
 
-        public Boolean getFecha() {
+    public int getDuracion() {
+        return duracion;
+    }
+
+    public void setDuracion(int duracion) {
+        this.duracion = duracion;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public LocalDateTime getFecha() {
             return fecha;
         }
 
-        public void setFecha(Boolean fecha) {
+        public void setFecha(LocalDateTime fecha) {
             this.fecha = fecha;
         }
 
@@ -50,6 +69,6 @@ public class ConciertoDto {
                     ", nombre='" + nombre + '\'' +
                     ", precio='" + Double.toString(precio) +'}';
         }
-    }
+
 
 }

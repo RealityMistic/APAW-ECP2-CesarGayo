@@ -9,12 +9,12 @@ public class AgenteDaoMemory extends GenericDaoMemory<Agente> implements AgenteD
 {
 
         @Override
-        public String getId(Agente agente) {
+        public int getId(Agente agente) {
             return agente.getId();
         }
 
         @Override
-        public void setId(Agente agente, String id) {
+        public void setId(Agente agente, int id) {
             agente.setId(id);
         }
 

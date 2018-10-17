@@ -1,29 +1,29 @@
 package es.upm.miw.apaw.ecp2.apicontrollers;
 
 import es.upm.miw.apaw.ecp2.businesscontrollers.ArtistaBusinessController;
+import es.upm.miw.apaw.ecp2.dtos.ArtistaDto;
 import es.upm.miw.apaw.ecp2.dtos.ConciertoDto;
 import es.upm.miw.apaw.ecp2.entities.Artista;
+import es.upm.miw.apaw.ecp2.exceptions.ArgumentNotValidException;
 
 public class ArtistaApiController {
     public static final String ARTISTAS = "/artistas";
-    public static final String NOMBRE =  "/artistas/nombre";
+    public static final String NOMBRE =  "/nombre";
+    public static final String FINDID = "/findid";
 
     private ArtistaBusinessController artistaBusinessController = new ArtistaBusinessController();
+/*
+    public List<ArtistaListDto> readAll(){
+    }
+*/
+    public ArtistaDto findById(int artistaId){
+        return this.artistaBusinessController.findById(artistaId);
 
-    public List<ArtistListDto> readAll(){
     }
 
-    public void findById(int artistaId){
-        return this.ArtistaBusinessController.findById(artistaId);
-
-    }
-
-    public void findByName(Artista artistaDto){
-        this.validate(artistaDto, "artistaDto");
-        this.validate(artistaDto.getNombre(), "ArtistaDto nombre");
-        this.artistaBusinessController.findByName(artistaDto);
-
-
+    public ArtistaDto findByName(String name){
+        this.validate(name, "Nombre de artista");
+        return this.artistaBusinessController.findByName(name);
     }
 
     private void validate(Object property, String message) {

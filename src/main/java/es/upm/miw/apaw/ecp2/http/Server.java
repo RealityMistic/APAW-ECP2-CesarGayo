@@ -1,6 +1,6 @@
 package es.upm.miw.apaw.ecp2.http;
 
-import api.Dispatcher;
+import es.upm.miw.apaw.ecp2.*;
 
 public class Server {
     private Dispatcher dispatcher = new Dispatcher();
