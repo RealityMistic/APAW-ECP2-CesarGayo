@@ -13,6 +13,7 @@ import es.upm.miw.apaw.ecp2.exceptions.RequestInvalidException;
 import es.upm.miw.apaw.ecp2.http.HttpRequest;
 import es.upm.miw.apaw.ecp2.http.HttpStatus;
 import es.upm.miw.apaw.ecp2.http.HttpResponse;
+import org.apache.logging.log4j.LogManager;
 
 import static es.upm.miw.apaw.ecp2.apicontrollers.ArtistaApiController.*;
 
@@ -80,10 +81,12 @@ public class Dispatcher {
     private void doGet(HttpRequest request, HttpResponse response) {
         if (request.isEqualsPath(ARTISTAS)) {
         //    response.setBody(this.artistaApiController.readAll());
-        } else if (request.isEqualsPath(ARTISTAS + FINDID)) {
+            // Apaño en el if de abajo, cambiar
+        } else if (request.isEqualsPath(ARTISTAS + FINDID + "/1")) {
+            LogManager.getLogger(Dispatcher.class).debug("   entrando por artista findID" );
             response.setBody(this.artistaApiController.
                                     findById(Integer.
-                                            parseInt(request.getPath(1))) );
+                                            parseInt(request.getPath(2))) );
         } else if (request.isEqualsPath(ARTISTAS + NOMBRE)) {
             response.setBody(this.artistaApiController.
                                     findByName(request.getParams().get("name")));

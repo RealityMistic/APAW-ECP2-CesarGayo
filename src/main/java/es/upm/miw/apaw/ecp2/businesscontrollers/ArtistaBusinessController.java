@@ -3,14 +3,19 @@ package es.upm.miw.apaw.ecp2.businesscontrollers;
 import es.upm.miw.apaw.ecp2.daos.ArtistaDao;
 import es.upm.miw.apaw.ecp2.daos.DaoFactory;
 import es.upm.miw.apaw.ecp2.dtos.ArtistaDto;
+import es.upm.miw.apaw.ecp2.entities.Agente;
 import es.upm.miw.apaw.ecp2.entities.Artista;
+import es.upm.miw.apaw.ecp2.entities.ArtistaBuilder;
+import org.apache.logging.log4j.LogManager;
 
 import java.util.List;
 
 public class ArtistaBusinessController {
     private ArtistaDto convertArtistaToDto(ArtistaDao artistaDao, int idArtista){
-        ArtistaDto artistaDto = null;
-        artistaDto.setIdArtista(artistaDao.findArtista(idArtista).getId());
+
+        ArtistaDto artistaDto = new ArtistaDto();
+        int idDto = artistaDao.findArtista(idArtista).getIdArtista();
+        artistaDto.setIdArtista(idDto);
         artistaDto.setNombre(artistaDao.findArtista(idArtista).getNombre());
         artistaDto.setAnonimo(artistaDao.findArtista(idArtista).getAnonimo());
         artistaDto.setPseudonimo(artistaDao.findArtista(idArtista).getPseudonimo());
@@ -33,14 +38,16 @@ public class ArtistaBusinessController {
         return listaArtistas;
     }
     public ArtistaDto findById (int idArtista){
+
         ArtistaDto artistaDto = null;
         ArtistaDao artistaDao = DaoFactory.getFactory().getArtistaDao();
-        convertArtistaToDto(artistaDao, idArtista);
+        artistaDto = convertArtistaToDto(artistaDao, idArtista);
 
         return artistaDto;
     }
     public ArtistaDto findByName(String name){
         ArtistaDao artistaDao = DaoFactory.getFactory().getArtistaDao();
+
         ArtistaDto artistaDto;
         int idBuscar = 0;
         for (Artista artista : artistaDao.getArtistaLista()) {

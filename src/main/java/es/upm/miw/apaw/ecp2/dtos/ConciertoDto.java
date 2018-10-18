@@ -13,10 +13,12 @@ public class ConciertoDto {
 
         int duracion;
 
-        public ConciertoDto(LocalDateTime fecha, String nombre, double precio) {
+        public ConciertoDto(int id, LocalDateTime fecha, String nombre, double precio, int duracion) {
+            this.id = id;
             this.fecha = fecha;
             this.nombre = nombre;
             this.precio=precio;
+            this.duracion = duracion;
         }
 
     public int getDuracion() {

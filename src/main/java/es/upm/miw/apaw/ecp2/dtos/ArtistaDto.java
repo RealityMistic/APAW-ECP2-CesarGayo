@@ -16,6 +16,9 @@ public class ArtistaDto {
     Profesional suAgente;
     ArrayList<Album> susAlbumes;
 
+    public ArtistaDto() {
+    }
+
     public int getIdArtista() {
         return idArtista;
     }

@@ -17,6 +17,7 @@ public class ArtistaApiController {
     }
 */
     public ArtistaDto findById(int artistaId){
+        System.out.println("APi artista controller pidiendo DTO" + String.valueOf(artistaId));
         return this.artistaBusinessController.findById(artistaId);
 
     }
