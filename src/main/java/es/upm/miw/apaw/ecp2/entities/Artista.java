@@ -29,6 +29,8 @@ public class Artista extends Profesional {
         return suAgente;
     }
 
+    public void setSuAgente(Agente agente){ this.suAgente = agente; }
+
     public void setIdArtista(int idArtista) {
         this.idArtista = idArtista;
     }

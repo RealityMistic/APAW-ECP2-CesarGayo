@@ -16,4 +16,6 @@ public class Agente extends Profesional{
     public void setTelefonoAgente(String telefonoAgente) {
         this.telefonoAgente = telefonoAgente;
     }
+
+
 }

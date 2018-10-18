@@ -40,10 +40,13 @@ public class ArtistaDaoMemory extends GenericDaoMemory<Artista> implements Artis
         Artista miArtista = map.get(artista.getId());
         return miArtista.getId();
     }
-
+    public void setId(Artista artista, int id){
+        artista.setId(id);
+        map.put(id,artista);
+    }
     @Override
-    public void setId(Artista artista, int id) {
-        map.put(id, artista);
+    public void setArtista(int idArtista, Artista artista) {
+        map.put(idArtista, artista);
     }
 
 }

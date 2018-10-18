@@ -1,11 +1,13 @@
 package es.upm.miw.apaw.ecp2;
 
 
+import es.upm.miw.apaw.ecp2.apicontrollers.AgenteApiController;
 import es.upm.miw.apaw.ecp2.apicontrollers.AlbumesArtistaApiController;
 import es.upm.miw.apaw.ecp2.apicontrollers.ArtistaApiController;
 import es.upm.miw.apaw.ecp2.apicontrollers.CrearConciertoApiController;
 import es.upm.miw.apaw.ecp2.daos.DaoFactory;
 import es.upm.miw.apaw.ecp2.daos.memory.DaoFactoryMemory;
+import es.upm.miw.apaw.ecp2.dtos.AgenteDto;
 import es.upm.miw.apaw.ecp2.dtos.ConciertoDto;
 import es.upm.miw.apaw.ecp2.exceptions.ArgumentNotValidException;
 import es.upm.miw.apaw.ecp2.exceptions.NotFoundException;
@@ -25,11 +27,11 @@ public class Dispatcher {
 
     private ArtistaApiController artistaApiController = new ArtistaApiController();
 
- //   private AgenteApiController agenteApiController = new AgenteApiController();
+   private AgenteApiController agenteApiController = new AgenteApiController();
 
-    private CrearConciertoApiController crearConciertoApiController = new CrearConciertoApiController();
+   private CrearConciertoApiController crearConciertoApiController = new CrearConciertoApiController();
 
-//   private AlbumesArtistaApiController albumesArtistaApiController = new AlbumesArtistaApiController();
+   private AlbumesArtistaApiController albumesArtistaApiController = new AlbumesArtistaApiController();
 
     public void submit(HttpRequest request, HttpResponse response) {
         String ERROR_MESSAGE = "{'error':'%S'}";
@@ -67,22 +69,22 @@ public class Dispatcher {
     }
 
 
-    /*
+
     private void doPost(HttpRequest request, HttpResponse response) {
-        if (request.isEqualsPath(AlbumesArtistaApiController.AlbumesArtistaS)) {
-            response.setBody(this.AlbumesArtistaApiController.create((AlbumesArtistaDto) request.getBody()));
+        if (request.isEqualsPath(AlbumesArtistaApiController.ALBUMES)) {
+            // response.setBody(albumesArtistaApiController.addAlbums((AlbumesArtistaDto) request.getBody()));
         } else if (request.isEqualsPath(AgenteApiController.AGENTE)) {
-            this.agenteApiController.create((AgenteDto) request.getBody());
+            this.agenteApiController.addAgente((AgenteDto) request.getBody(), 1);
         } else {
             throw new RequestInvalidException("request error: " + request.getMethod() + ' ' + request.getPath());
         }
     }
-*/
+
     private void doGet(HttpRequest request, HttpResponse response) {
-        if (request.isEqualsPath(ARTISTAS)) {
+        if (request.getPath().startsWith(ARTISTAS)) {
         //    response.setBody(this.artistaApiController.readAll());
             // Apaño en el if de abajo, cambiar
-        } else if (request.isEqualsPath(ARTISTAS + FINDID + "/1")) {
+        } else if (request.getPath().startsWith(ARTISTAS + FINDID )) {
             LogManager.getLogger(Dispatcher.class).debug("   entrando por artista findID" );
             response.setBody(this.artistaApiController.
                                     findById(Integer.

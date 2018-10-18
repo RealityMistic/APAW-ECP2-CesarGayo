@@ -1,7 +1,9 @@
 package es.upm.miw.apaw.ecp2.daos.memory;
 
 import es.upm.miw.apaw.ecp2.daos.AgenteDao;
+import es.upm.miw.apaw.ecp2.daos.ArtistaDao;
 import es.upm.miw.apaw.ecp2.entities.Agente;
+import es.upm.miw.apaw.ecp2.entities.Artista;
 
 import java.util.stream.Collectors;
 
@@ -17,12 +19,10 @@ public class AgenteDaoMemory extends GenericDaoMemory<Agente> implements AgenteD
         public void setId(Agente agente, int id) {
             agente.setId(id);
         }
-
+        @Override
         public void addAgente(Agente agente){
-                agente.setId(agente.getId());
-                agente.setNombre(agente.getNombre());
-                agente.setPseudonimo(agente.getPseudonimo());
-                agente.setTelefonoAgente(agente.getTelefonoAgente());
+
+                map.put(agente.getId(), agente);
         }
 
 

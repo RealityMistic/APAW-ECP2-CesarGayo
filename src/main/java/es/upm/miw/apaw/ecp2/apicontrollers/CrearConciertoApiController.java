@@ -14,7 +14,6 @@ public class CrearConciertoApiController {
 
     public void create(ConciertoDto conciertoDto) {
         this.validate(conciertoDto, "conciertoDto");
-        //    this.validate(conciertoDto.getNegative(), "SuggestionDto negative");
         this.validate(conciertoDto.getNombre(), "ConciertoDto nombre");
         this.conciertoBusinessController.create(conciertoDto);
     }
