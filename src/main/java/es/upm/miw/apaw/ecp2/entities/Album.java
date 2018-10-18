@@ -8,6 +8,11 @@ public class Album {
     LocalDateTime fechaLanzamiento;
     GeneroMusical generoMusical;
 
+    public Album(int id, LocalDateTime fechaLanzamiento, GeneroMusical generoMusical) {
+        this.id = id;
+        this.fechaLanzamiento = fechaLanzamiento;
+        this.generoMusical = generoMusical;
+    }
 
     public int getId() {
         return id;
