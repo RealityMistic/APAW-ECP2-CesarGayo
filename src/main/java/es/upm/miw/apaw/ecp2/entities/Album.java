@@ -32,4 +32,7 @@ public class Album {
     public void setFechaLanzamiento(int anio, Month mes, int diaDelMes, int hora, int minuto) {
         this.fechaLanzamiento = LocalDateTime.of(anio, mes, diaDelMes, hora, minuto);
     }
+    public void setFechaLanzamiento(LocalDateTime localDateTime) {
+        this.fechaLanzamiento = localDateTime;
+    }
 }

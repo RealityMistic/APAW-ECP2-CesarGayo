@@ -22,4 +22,6 @@ public abstract class DaoFactory {
     public abstract ConciertoDao getConciertoDao();
 
     public abstract AgenteDao getAgenteDao();
+
+    public abstract AlbumsDao getAlbumsDao();
 }

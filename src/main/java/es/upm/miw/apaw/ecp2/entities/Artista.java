@@ -1,13 +1,14 @@
 package es.upm.miw.apaw.ecp2.entities;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class Artista extends Profesional {
     int idArtista;
     boolean anonimo;
     Agente suAgente;
-    ArrayList<Album> susAlbumes;
+    List<Album> susAlbumes;
     ArtistaBuilder artistaBuilder;
 
 
@@ -35,11 +36,11 @@ public class Artista extends Profesional {
         this.idArtista = idArtista;
     }
 
-    public ArrayList<Album> getSusAlbumes() {
+    public List<Album> getSusAlbumes() {
         return susAlbumes;
     }
 
-    public void setSusAlbumes(ArrayList<Album> susAlbumes) {
+    public void setSusAlbumes(List<Album> susAlbumes) {
         this.susAlbumes = susAlbumes;
     }
 

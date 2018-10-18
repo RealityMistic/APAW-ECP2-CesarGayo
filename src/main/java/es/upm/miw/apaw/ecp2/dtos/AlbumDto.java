@@ -5,9 +5,17 @@ import es.upm.miw.apaw.ecp2.entities.GeneroMusical;
 import java.time.LocalDateTime;
 
 public class AlbumDto {
-
+    int id;
     LocalDateTime fechaLanzamiento;
     GeneroMusical generoMusical;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public LocalDateTime getFechaLanzamiento() {
         return fechaLanzamiento;

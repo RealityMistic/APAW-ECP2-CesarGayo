@@ -1,9 +1,6 @@
 package es.upm.miw.apaw.ecp2.daos.memory;
 
-import es.upm.miw.apaw.ecp2.daos.AgenteDao;
-import es.upm.miw.apaw.ecp2.daos.DaoFactory;
-import es.upm.miw.apaw.ecp2.daos.ConciertoDao;
-import es.upm.miw.apaw.ecp2.daos.ArtistaDao;
+import es.upm.miw.apaw.ecp2.daos.*;
 import es.upm.miw.apaw.ecp2.daos.AgenteDao;
 
 public class DaoFactoryMemory extends DaoFactory {
@@ -13,6 +10,8 @@ public class DaoFactoryMemory extends DaoFactory {
         private AgenteDao agenteDao;
 
         private ConciertoDao conciertoDao;
+
+        private AlbumsDao albumsDao;
 
         @Override
         public ArtistaDao getArtistaDao() {
@@ -36,6 +35,13 @@ public class DaoFactoryMemory extends DaoFactory {
                 this.agenteDao = new AgenteDaoMemory();
             }
             return this.agenteDao;
+        }
+
+        public AlbumsDao getAlbumsDao(){
+            if (this.albumsDao == null) {
+                this.albumsDao = new AlbumsDaoMemory();
+            }
+            return this.albumsDao;
         }
     }
 

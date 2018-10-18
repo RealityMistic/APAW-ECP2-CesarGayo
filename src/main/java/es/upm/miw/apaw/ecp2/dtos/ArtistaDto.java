@@ -6,6 +6,7 @@ import es.upm.miw.apaw.ecp2.entities.ArtistaBuilder;
 import es.upm.miw.apaw.ecp2.entities.Profesional;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ArtistaDto {
 
@@ -14,7 +15,7 @@ public class ArtistaDto {
     String nombre;
     String pseudonimo;
     Profesional suAgente;
-    ArrayList<Album> susAlbumes;
+    List<Album> susAlbumes;
 
     public ArtistaDto() {
     }
@@ -59,11 +60,11 @@ public class ArtistaDto {
         this.suAgente = suAgente;
     }
 
-    public ArrayList<Album> getSusAlbumes() {
+    public List<Album> getSusAlbumes() {
         return susAlbumes;
     }
 
-    public void setSusAlbumes(ArrayList<Album> susAlbumes) {
+    public void setSusAlbumes(List<Album> susAlbumes) {
         this.susAlbumes = susAlbumes;
     }
 }
